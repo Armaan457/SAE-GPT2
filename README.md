@@ -51,6 +51,7 @@ Detailed insights in [`insights.md`](insights.md):
 4. Run the Notebooks
 * Run `variations/gated.ipynb` to retrain the Gated SAE or extract layer activations.
 * Run `analysis.ipynb` for the full interactive suite of logit plots, token searches, PCA maps, and input-output comparisons.
+* Run `suppression.ipynb` to test real-time concept suppression and feature ablation
 
 ---
 
