@@ -4,6 +4,8 @@ Mechanistic interpretability study of **GPT-2 Small (Layer 6 residual stream)** 
 
 Using the **Logit Lens** and **Input Gate Alignment**, we map these learned latents directly to vocabulary tokens, revealing how GPT-2 processes syntax, morphology, and multi-token semantic bindings.
 
+Furthermore, we perform **feature steering and ablation** into Layer 6 activations during live generation to dynamically suppress target concepts.
+
 ---
 
 ## Architectural Comparison & Benchmark
