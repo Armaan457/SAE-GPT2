@@ -56,3 +56,16 @@ Projecting decoder weights into 2D reveals clear organization across the feature
 * **Numbers:** Digit trackers (#374) occupy their own separate direction away from regular text.
 
 ---
+
+## 5. Concept Suppression & Feature Ablation
+
+Using Layer 6 activation hooks, we tested what happens when you surgically remove or suppress these learned directions during live generation:
+
+| Target Concept | Target Token | Clean Prob | Ablated Prob | Suppressed Prob | Live Text Shift |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **#329 ("New [Place]")** | `' York'` | 55.9% | 13.9% | 3.0% | Switched from `"New York"` to `"New Belgium"`. |
+| **#1378 (Activism)** | `' supporters'` | 40.5% | 26.9% | 0.3% | Shifted from political rally to `"well-dressed guests"`. |
+| **#393 (Legal / Court)** | `' court'` | 35.2% | 18.9% | 0.05% | Shifted from courtroom to `"federal government's security forces"`. |
+
+* Orthogonal projection sets the feature to zero, cutting the top token's probability drastically, but strong pre-trained priors from other layers can still keep it at rank 1. Negative steering actively penalizes the direction, knocking it below competitors to force creative substitutions.
+* Suppressing a concept did not cause grammatical collapse or gibberish. GPT-2 maintained fluent syntax while dynamically steering into alternative, contextually valid domains.
